@@ -1,0 +1,6 @@
+#plugin-timepicker-btn-template, #plugin-timepicker-btn-nodata {
+    display: none;
+}
+#plugin-timepicker-btns > .btn:not(:last-child) {
+    margin-bottom: 0.625em;
+}

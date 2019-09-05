@@ -1,0 +1,32 @@
+{
+	"type": "panel",
+	"name": "Timepicker Buttons",
+	"id": "williamvenner-timepicker-buttons-panel",
+
+	"info": {
+		"description": "A Grafana panel which allows you to create a list of buttons which set specific times (retrieved from a datasource) on the dashboard's timepicker when clicked.",
+		"author": {
+			"name": "WilliamVenner",
+			"url": "https://github.com/WilliamVenner"
+		},
+		"keywords": ["grafana", "timepicker", "time", "picker", "buttons", "button", "datasource", "panel", "plugin", "timepick", "pick"],
+		"logos": {
+			"small": "img/logo.svg",
+			"large": "img/logo.svg"
+		},
+		"screenshots": [
+			{"name": "Panel", "url": "img/panel.png"},
+			{"name": "SQL Queries", "url": "img/sql_queries.png"}
+		],
+		"links": [
+			{"name": "GitHub Repository", "url": "https://github.com/WilliamVenner/grafana-timepicker-buttons"},
+			{"name": "MIT License", "url": "https://github.com/WilliamVenner/grafana-timepicker-buttons/blob/master/LICENSE"}
+		],
+		"version": "1.0.0",
+		"updated": "2019-05-24"
+	},
+
+	"dependencies": {
+		"grafanaVersion": "3.x.x"
+	}
+}
