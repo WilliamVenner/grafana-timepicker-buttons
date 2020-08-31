@@ -1,32 +1,32 @@
 {
-	"type": "panel",
-	"name": "Timepicker Buttons Panel",
-	"id": "williamvenner-timepickerbuttons-panel",
+  "type": "panel",
+  "name": "Timepicker Buttons Panel",
+  "id": "williamvenner-timepickerbuttons-panel",
 
-	"info": {
-		"description": "Datasource-configured buttons panel plugin which set the time range of your Grafana dashboard",
-		"author": {
-			"name": "William Venner",
+  "info": {
+    "description": "Datasource-configured buttons panel plugin which set the time range of your Grafana dashboard",
+    "author": {
+      "name": "William Venner",
 			"url": "https://github.com/WilliamVenner"
-		},
-		"keywords": ["panel", "timepicker", "time", "picker", "pick", "buttons", "button", "chooser", "period", "calendar", "date", "time"],
-		"logos": {
-			"small": "img/logo.svg",
-			"large": "img/logo.svg"
-		},
-		"screenshots": [
-			{"name": "Panel", "path": "img/panel.png"},
-			{"name": "SQL Queries", "path": "img/sql_queries.png"}
-		],
-		"links": [
-			{"name": "GitHub Repository", "url": "https://github.com/WilliamVenner/grafana-timepicker-buttons"},
-			{"name": "MIT License", "url": "https://github.com/WilliamVenner/grafana-timepicker-buttons/blob/master/LICENSE"}
-		],
-		"version": "1.2.0",
-		"updated": "%TODAY%"
-	},
+    },
+    "keywords": ["panel", "timepicker", "time", "picker", "pick", "buttons", "button", "chooser", "period", "calendar", "date", "time"],
+    "logos": {
+      "small": "img/logo.svg",
+      "large": "img/logo.svg"
+    },
+    "screenshots": [
+      {"name": "Panel", "path": "img/panel.png"},
+      {"name": "SQL Queries", "path": "img/sql_queries.png"}
+    ],
+    "links": [
+      {"name": "Website", "url": "https://github.com/WilliamVenner/grafana-timepicker-buttons"},
+      {"name": "License", "url": "https://github.com/WilliamVenner/grafana-timepicker-buttons/blob/master/LICENSE"}
+    ],
+    "version": "%VERSION%",
+    "updated": "%TODAY%"
+  },
 
-	"dependencies": {
-		"grafanaVersion": "3.x.x"
-	}
+  "dependencies": {
+    "grafanaDependency": ">=7.0.0"
+  }
 }

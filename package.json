@@ -1,55 +1,28 @@
 {
-	"name": "williamvenner-timepickerbuttons-panel",
-	"version": "1.2.0",
-	"description": "Datasource-configured buttons panel plugin which set the time range of your Grafana dashboard",
-	"main": "src/module.js",
-	"scripts": {
-		"build": "node --max-old-space-size=8192 ./node_modules/.bin/webpack --config webpack.config.prod.js",
-		"dev": "webpack --config webpack.config.dev.js",
-		"watch": "webpack --config webpack.config.dev.js --watch"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/WilliamVenner/grafana-timepicker-buttons.git"
-	},
-	"keywords": [
-		"panel",
-		"timepicker",
-		"time",
-		"picker",
-		"pick",
-		"buttons",
-		"button",
-		"chooser",
-		"period",
-		"calendar",
-		"date",
-		"time"
-	],
-	"author": "WilliamVenner",
-	"license": "Apache-2.0",
-	"bugs": {
-		"url": "https://github.com/WilliamVenner/grafana-timepicker-buttons/issues"
-	},
-	"homepage": "https://github.com/WilliamVenner/grafana-timepicker-buttons#readme",
-	"devDependencies": {
-		"@babel/core": "^7.5.5",
-		"@grafana/toolkit": "6.7.3",
-		"@types/grafana": "https://git@github.com/CorpGlory/types-grafana.git",
-		"@types/jquery": "^3.3.31",
-		"@types/lodash": "^4.14.138",
-		"babel-loader": "^8.0.6",
-		"babel-preset-env": "^1.7.0",
-		"clean-webpack-plugin": "1.0.1",
-		"copy-webpack-plugin": "^5.0.4",
-		"css-loader": "^3.2.0",
-		"ng-annotate-webpack-plugin": "^0.3.0",
-		"style-loader": "^1.0.0",
-		"terser-webpack-plugin": "^3.0.3",
-		"ts-loader": "^6.0.4",
-		"tslint": "^5.19.0",
-		"typescript": "^3.6.2",
-		"webpack": "^4.39.3",
-		"webpack-cli": "^3.3.8"
-	}
+  "name": "williamvenner-timepickerbuttons-panel",
+  "version": "2.0.0",
+  "description": "Datasource-configured buttons panel plugin which set the time range of your Grafana dashboard",
+  "scripts": {
+    "build": "grafana-toolkit plugin:build && cp README-grafana.md dist/README.md",
+    "dev": "grafana-toolkit plugin:dev && cp README-grafana.md dist/README.md",
+    "watch": "grafana-toolkit plugin:dev --watch && cp README-grafana.md dist/README.md",
+    "test": "grafana-toolkit plugin:test"
+  },
+  "repository": "github:WilliamVenner/grafana-timepicker-buttons",
+  "author": "William Venner <william@venner.io> (https://github.com/WilliamVenner)",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/WilliamVenner/grafana-timepicker-buttons/issues",
+    "email": "william@venner.io"
+  },
+  "devDependencies": {
+    "@grafana/data": "7.0.0",
+    "@grafana/toolkit": "7.0.0",
+    "@grafana/ui": "7.0.0",
+    "@grafana/runtime": "7.0.0",
+    "emotion": "10.0.27"
+  },
+  "engines": {
+    "node": ">=12 <13"
+  }
 }

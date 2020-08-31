@@ -1,0 +1,16 @@
+.timepicker-btn {
+  display: block;
+  width: 100%;
+  height: auto;
+  padding-top: 5.5px;
+  padding-bottom: 5.5px;
+}
+.timepicker-btn:not(:last-child) {
+  margin-bottom: 10px;
+}
+.timepicker-btn > .error {
+	font-weight: bold;
+}
+.timepicker-btn > .error:not(:last-child) {
+	margin-bottom: .25rem;
+}
