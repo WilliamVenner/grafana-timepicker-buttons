@@ -22,8 +22,8 @@
 			{"name": "GitHub Repository", "url": "https://github.com/WilliamVenner/grafana-timepicker-buttons"},
 			{"name": "MIT License", "url": "https://github.com/WilliamVenner/grafana-timepicker-buttons/blob/master/LICENSE"}
 		],
-		"version": "1.1.0",
-		"updated": "2020-08-11"
+		"version": "1.2.0",
+		"updated": "%TODAY%"
 	},
 
 	"dependencies": {

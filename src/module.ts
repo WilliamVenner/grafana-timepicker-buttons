@@ -1,8 +1,14 @@
 import _ from 'lodash';
+import moment from 'moment';
 import { MetricsPanelCtrl } from 'grafana/app/plugins/sdk';
-import { toUtc } from '@grafana/data';
 
 import './css/timepicker-btns.css';
+
+// Workaround for weird error when importing @grafana/data
+// No idea why it doesn't like importing it but all that's needed from it is this:
+let toUtc = function(input) {
+	return moment.utc(input);
+};
 
 export class TimepickerBtnCtrl extends MetricsPanelCtrl {
 	static templateUrl = 'partials/timepicker-btns.html';
@@ -78,7 +84,7 @@ export class TimepickerBtnCtrl extends MetricsPanelCtrl {
 		this.elements.timepickerNoData = elem.find('#plugin-timepicker-btn-nodata');
 		this.elements.timepickerBtnsContainer = elem.find('#plugin-timepicker-btns');
 		this.elements.timepickerBtnTemplate = elem.find('#plugin-timepicker-btn-template');
-
+		
 		this.elements.timepickerBtnsContainer.on('click', '.plugin-timepicker-btn', function() {
 			let time_from = $(this).data('time-from');
 			let time_to = $(this).data('time-to');
