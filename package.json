@@ -1,7 +1,7 @@
 {
-	"name": "grafana-timepicker-buttons",
-	"version": "1.0.0",
-	"description": "A Grafana panel which allows you to create a list of buttons which set specific times (retrieved from a datasource) on the dashboard's timepicker when clicked.",
+	"name": "williamvenner-timepickerbuttons-panel",
+	"version": "1.1.0",
+	"description": "Datasource-configured buttons panel plugin which set the time range of your Grafana dashboard",
 	"main": "src/module.js",
 	"scripts": {
 		"build": "node --max-old-space-size=8192 ./node_modules/.bin/webpack --config webpack.config.prod.js",
@@ -13,27 +13,29 @@
 		"url": "git+https://github.com/WilliamVenner/grafana-timepicker-buttons.git"
 	},
 	"keywords": [
-		"grafana",
+		"panel",
 		"timepicker",
 		"time",
 		"picker",
+		"pick",
 		"buttons",
 		"button",
-		"datasource",
-		"panel",
-		"plugin",
-		"timepick",
-		"pick"
+		"chooser",
+		"period",
+		"calendar",
+		"date",
+		"time"
 	],
 	"author": "WilliamVenner",
-	"license": "MIT",
+	"license": "Apache-2.0",
 	"bugs": {
 		"url": "https://github.com/WilliamVenner/grafana-timepicker-buttons/issues"
 	},
 	"homepage": "https://github.com/WilliamVenner/grafana-timepicker-buttons#readme",
 	"devDependencies": {
 		"@babel/core": "^7.5.5",
-		"@grafana/data": "^6.3.2",
+		"@grafana/data": "^6.7.3",
+		"@grafana/toolkit": "6.7.3",
 		"@types/grafana": "https://git@github.com/CorpGlory/types-grafana.git",
 		"@types/jquery": "^3.3.31",
 		"@types/lodash": "^4.14.138",
@@ -47,7 +49,7 @@
 		"ts-loader": "^6.0.4",
 		"tslint": "^5.19.0",
 		"typescript": "^3.6.2",
-		"uglifyjs-webpack-plugin": "^2.2.0",
+		"terser-webpack-plugin": "^3.0.3",
 		"webpack": "^4.39.3",
 		"webpack-cli": "^3.3.8"
 	}

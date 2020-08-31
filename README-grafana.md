@@ -13,11 +13,13 @@ A Grafana panel which allows you to create a list of buttons which set specific 
 sudo service grafana-server stop
 cd /var/lib/grafana/plugins
 sudo git clone https://github.com/WilliamVenner/grafana-timepicker-buttons
-sudo mv grafana-timepicker-buttons williamvenner-timepicker-buttons-panel
-sudo chown grafana:grafana williamvenner-timepicker-buttons-panel -R
-sudo chmod 774 williamvenner-timepicker-buttons-panel -R
+sudo mv grafana-timepicker-buttons williamvenner-timepickerbuttons-panel
+sudo chown grafana:grafana williamvenner-timepickerbuttons-panel -R
+sudo chmod 774 williamvenner-timepickerbuttons-panel -R
 sudo service grafana-server start
 ```
+
+--------
 
 ## Usage
 
@@ -38,4 +40,5 @@ The data returned from the datasource must have the following columns:
 --------
 
 **Credit**
+
 Logo made by [DinosoftLabs](https://flaticon.com/authors/dinosoftlabs) on [www.flaticon.com](https://flaticon.com)
