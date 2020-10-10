@@ -22,8 +22,8 @@
       {"name": "Website", "url": "https://github.com/WilliamVenner/grafana-timepicker-buttons"},
       {"name": "License", "url": "https://github.com/WilliamVenner/grafana-timepicker-buttons/blob/master/LICENSE"}
     ],
-    "version": "2.0.0",
-    "updated": "2020-08-31"
+    "version": "2.0.1",
+    "updated": "2020-10-10"
   },
 
   "dependencies": {

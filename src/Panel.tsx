@@ -48,7 +48,7 @@ export const Panel: React.FC<Props> = ({ options, data, width, height }) => {
     // Sanitize time_to
     if (typeof button.time_to !== 'undefined' && button.time_to !== null) {
       // Check it's a valid UNIX timestamp
-      button.time_to = Number(button.time_from);
+      button.time_to = Number(button.time_to);
       if (isNaN(button.time_to)) {
         button.errors.push('time_to is not a valid UNIX timestamp');
       }
