@@ -35,14 +35,19 @@ All dates and times should use UTC.
 
 **The data returned from the datasource must be formatted as a _Table_**, not a _Time Series_.
 
-The data returned from the datasource must have the following columns:
+The panel can be configured to indicate which fields are mapped to the button properties:
 
-| Column          | Description                                                                                                                              |
-|-----------------|------------------------------------------------------------------------------------------------------------------------------------------|
-| **time_from**   | **Required** A UNIX Timestamp (`Number`) This will set the "From" part of the time range.                                                |
-| **time_to**     | _Optional_ A UNIX Timestamp (`Number`) This will set the "To" part of the time range. If this is not supplied, it will default to `now`. |
-| **button_text** | _Optional_ What the text inside the button will say. _If this is not supplied, it will default to a locale-formatted timestamp._         |
-| **primary**     | _Optional_ `1` (`Number`) will make the button blue/"pop out" (depending on your theme)                                                  |
+![Panel Options](https://i.imgur.com/IioqIhH.png)
+
+The data fields returned from the datasource should be mapped with the following panel configuration settings:
+
+| Column               | Default Value | Description                                                                                                                                         |
+|----------------------|---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Time From Field**   | time_from    | **Required**<br>A UNIX Timestamp (`Number`)<br>This will set the "From" part of the time range.<br>The value can include or exclude ms. Example: 1612413008000 or 1612413008  |
+| **Time To Field**     | time_to      | _Optional_<br>A UNIX Timestamp (`Number`)<br>This will set the "To" part of the time range.  <br>The value can include or exclude ms. Example: 1612413008000 or 1612413008<br>_If this is not supplied, it will default to `now`._ |
+| **Button Text Field** | button_text  | _Optional_<br>What the text inside the button will say.<br>_If this is not supplied, it will default to a locale-formatted timestamp._              |
+| **Primary Field**     | primary      | _Optional_<br>Field used to determine if the button will be highlighted (blue/"pop out" depending on your theme)                                                          |
+| **Primary Value**     | 1            | _Optional_<br>A Regex pattern to perform on the `Primary Field`. If matched the button will be highlighted.                                                         |
 
 
 ![Example Screenshot](https://i.imgur.com/EbL6oMv.png)

@@ -1,6 +1,6 @@
 {
   "name": "williamvenner-timepickerbuttons-panel",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "description": "Datasource-configured buttons panel plugin which set the time range of your Grafana dashboard",
   "scripts": {
     "build": "grafana-toolkit plugin:build && cp README-grafana.md dist/README.md",
@@ -23,6 +23,9 @@
     "emotion": "10.0.27"
   },
   "engines": {
-    "node": ">=12 <13"
+    "node": ">=12"
+  },
+  "dependencies": {
+    "grafana-plugin-support": "^0.1.0"
   }
 }
