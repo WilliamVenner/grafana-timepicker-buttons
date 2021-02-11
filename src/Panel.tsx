@@ -1,16 +1,15 @@
 import React from 'react';
-import {css, cx} from 'emotion';
-import {PanelProps, GraphSeriesValue} from '@grafana/data';
-import {stylesFactory} from '@grafana/ui';
-import {TimepickerData} from 'types';
-import {TimepickerButton} from 'TimepickerButton';
-import {getEpochWithMillis} from './utils';
-import {SimpleOptions} from './types';
+import { css, cx } from 'emotion';
+import { PanelProps, GraphSeriesValue } from '@grafana/data';
+import { stylesFactory } from '@grafana/ui';
+import { TimepickerData } from 'types';
+import { TimepickerButton } from 'TimepickerButton';
+import { getEpochWithMillis } from './utils';
+import { SimpleOptions } from './types';
 
-interface Props extends PanelProps<SimpleOptions> {
-}
+interface Props extends PanelProps<SimpleOptions> {}
 
-export const Panel: React.FC<Props> = ({options, data, width, height}) => {
+export const Panel: React.FC<Props> = ({ options, data, width, height }) => {
   const styles = getStyles();
 
   // Convert data retrieved from datasource into a data structure we can process into <button> elements
