@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import './css/TimepickerButton.css';
-import { getPrettyDate, getQueryMapo } from './utils';
+import { getPrettyDate, changeTimeRange } from './utils';
 import { Button } from '@grafana/ui';
 
 interface TimepickerButtonProps {
@@ -20,7 +20,7 @@ export class TimepickerButton extends Component<TimepickerButtonProps> {
 
   handleClick() {
     if (this.props.errors.length === 0) {
-      getQueryMapo(this.props.time_from, this.props.time_to);
+      changeTimeRange(this.props.time_from, this.props.time_to);
     }
   }
 
@@ -42,12 +42,12 @@ function getTitle(props: TimepickerButtonProps): string {
     return props.text;
   }
   const timeFrom: string = getPrettyDate(props.time_from);
-  return timeFrom !== 'now' ? timeFrom : 'Error:';
+  return timeFrom !== 'now' ? timeFrom : 'Error';
 }
 
 function getErrors(errors: string[]) {
   if (errors.length > 0) {
-    return <div>{' ' + errors.join()}</div>;
+    return <div>{' - Errors: ' + errors.join()}</div>;
   }
   return;
 }

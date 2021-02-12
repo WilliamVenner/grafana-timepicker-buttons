@@ -1,15 +1,15 @@
 import { FieldType, PanelPlugin } from '@grafana/data';
 import { SimpleOptions } from './types';
 import { FieldSelectEditor } from 'grafana-plugin-support';
-
 import { Panel } from './Panel';
 
 export const plugin = new PanelPlugin<SimpleOptions>(Panel).setPanelOptions(builder => {
   return builder
     .addSelect({
       path: 'displayStyle',
-      name: 'Display Style',
+      name: 'Style',
       description: 'Visual presentation of the time picker',
+      category: ['Display'],
       defaultValue: 'button',
       settings: {
         options: [
@@ -27,7 +27,8 @@ export const plugin = new PanelPlugin<SimpleOptions>(Panel).setPanelOptions(buil
     .addBooleanSwitch({
       path: 'displayButtonsHorizontal',
       name: 'Horizontal Buttons',
-      description: 'Display buttons horizaontally.',
+      description: 'Display buttons horizontally.',
+      category: ['Display'],
       defaultValue: false,
       showIf: config => config.displayStyle === 'button',
     })
@@ -64,7 +65,6 @@ export const plugin = new PanelPlugin<SimpleOptions>(Panel).setPanelOptions(buil
       category: ['Field Mapping'],
       editor: FieldSelectEditor,
     })
-
     .addCustomEditor({
       id: 'primaryFieldOption',
       path: 'primaryFieldOption',
