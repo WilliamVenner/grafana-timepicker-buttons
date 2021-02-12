@@ -3,7 +3,11 @@
 
 A Grafana panel which allows you to create a list of buttons which set specific times (retrieved from a datasource) on the dashboard's timepicker when clicked.
 
-![Panel Screenshot](https://i.imgur.com/0oC9k7M.png)
+![Panel Screenshot Vertical Buttons](https://i.imgur.com/ft77DQM.png)
+![Panel Screenshot Horizontal Buttons](https://i.imgur.com/qUAIQF9.png)
+![Panel Screenshot Dropdown List](https://i.imgur.com/a3MwaGK.png)
+
+	<img alt="Panel Screenshot" src="https://i.imgur.com/qUAIQF9.png"/>
 
 --------
 
@@ -31,6 +35,13 @@ sudo service grafana-server start
 
 ## Usage
 
+### Display Style Configuration
+The timepicker can be configured to display buttons (vertically or horizontally), or as a dropdown list.
+
+![Panel Options Buttons](https://i.imgur.com/9wuLCiW.png)
+![Panel Options Dropdown List](https://i.imgur.com/glaCfLy.png)
+
+### Field Mapping
 All dates and times should use UTC.
 
 **The data returned from the datasource must be formatted as a _Table_**, not a _Time Series_.

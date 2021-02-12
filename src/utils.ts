@@ -13,15 +13,14 @@ export const getEpochWithMillis = (time: number): number => {
   return time < 100000000000 ? time * 1000 : time;
 };
 
-export const getQueryMap = (time_from: number, time_to?: number): UrlQueryMap => {
-  let queryMap: UrlQueryMap = { from: getEpochWithMillis(time_from), to: 'now' };
-  if (typeof time_to !== 'undefined' && time_to !== null && !isNaN(time_to)) {
-    queryMap.to = getEpochWithMillis(time_to);
-  }
-  return queryMap;
-};
-
-export function getQueryMapo(time_from: number, time_to?: number) {
+/**
+ * This changes the QUery map of the URL to effectively change the to and from time.
+ *
+ * @param time_from the start time
+ * @param time_to the end time. Defaults to 'now' if null or invalid.
+ *
+ */
+export function changeTimeRange(time_from: number, time_to?: number) {
   let queryMap: UrlQueryMap = { from: getEpochWithMillis(time_from), to: 'now' };
   if (typeof time_to !== 'undefined' && time_to !== null && !isNaN(time_to)) {
     queryMap.to = getEpochWithMillis(time_to);
@@ -33,6 +32,13 @@ export function getQueryMapo(time_from: number, time_to?: number) {
   });
 }
 
+/**
+ * Get an Epoch date in a human readble format.
+ *
+ * @param time the epoch time. Can be in seconds or milliseconds
+ *
+ * @returns a srting containing the human readbale date.
+ */
 export const getPrettyDate = (time?: number): string => {
   if (typeof time !== 'undefined' && time !== null && !isNaN(time)) {
     return dateTimeFormatWithAbbrevation(getEpochWithMillis(time));

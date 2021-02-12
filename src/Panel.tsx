@@ -67,27 +67,30 @@ export const Panel: React.FC<Props> = ({ options, data, width, height }) => {
   });
 
   return (
-    <div className="gf-form">
-      <div
-        className={cx(
-          styles.wrapper,
-          css`
-            width: ${width}px;
-            height: ${height}px;
-          `
-        )}
-      >
-        {options.displayStyle === 'dropdown' && <TimepickerSelect timepickerData={buttons} />}
-        {options.displayStyle === 'button' && !options.displayButtonsHorizontal && (
-          <FullWidthButtonContainer>
-            <VerticalGroup spacing={'sm'}>{buttonFactory(buttons)}</VerticalGroup>
-          </FullWidthButtonContainer>
-        )}
-        {options.displayStyle === 'button' && options.displayButtonsHorizontal && (
-          <HorizontalGroup spacing={'sm'} wrap={true}>
-            {buttonFactory(buttons)}
-          </HorizontalGroup>
-        )}
+    <div>
+      {options.displayStyle === 'dropdown' && <TimepickerSelect timepickerData={buttons} />}
+
+      <div className="gf-form">
+        <div
+          className={cx(
+            styles.wrapper,
+            css`
+              width: ${width}px;
+              height: ${height}px;
+            `
+          )}
+        >
+          {options.displayStyle === 'button' && !options.displayButtonsHorizontal && (
+            <FullWidthButtonContainer>
+              <VerticalGroup spacing={'sm'}>{buttonFactory(buttons)}</VerticalGroup>
+            </FullWidthButtonContainer>
+          )}
+          {options.displayStyle === 'button' && options.displayButtonsHorizontal && (
+            <HorizontalGroup spacing={'sm'} wrap={true}>
+              {buttonFactory(buttons)}
+            </HorizontalGroup>
+          )}
+        </div>
       </div>
     </div>
   );
