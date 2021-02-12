@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-import { UrlQueryMap } from '@grafana/data';
-import { getLocationSrv } from '@grafana/runtime';
-import { getEpochWithMillis } from './utils';
 
 import './css/TimepickerButton.css';
+import { getPrettyDate, getQueryMapo } from './utils';
+import { Button } from '@grafana/ui';
 
 interface TimepickerButtonProps {
   text?: string;
   time_from: number;
   time_to?: number;
-  primary?: boolean;
+  primary: boolean;
   errors: string[];
 }
 
@@ -21,36 +20,34 @@ export class TimepickerButton extends Component<TimepickerButtonProps> {
 
   handleClick() {
     if (this.props.errors.length === 0) {
-      // Build a UrlQueryMap consisting of the time_from (UNIX ms timestamp) and time_to (UNIX ms timestamp) that will be passed into LocationUpdate
-      let queryMap: UrlQueryMap = { from: getEpochWithMillis(this.props.time_from), to: 'now' };
-      if (typeof this.props.time_to !== 'undefined' && this.props.time_to !== null && !isNaN(this.props.time_to)) {
-        queryMap.to = getEpochWithMillis(this.props.time_to);
-      }
-
-      // Push a LocationUpdate to the LocationSrv with our UrlQueryMap
-      getLocationSrv().update({
-        partial: true,
-        replace: true,
-        query: queryMap,
-      });
+      getQueryMapo(this.props.time_from, this.props.time_to);
     }
   }
 
   render() {
     return (
-      <button
-        className={
-          'timepicker-btn ' +
-          'btn ' +
-          (this.props.errors.length > 0 ? 'btn-danger' : this.props.primary === true ? 'btn-primary' : 'btn-secondary')
-        }
+      <Button
+        icon={this.props.errors.length > 0 ? 'exclamation-triangle' : 'clock-nine'}
+        variant={this.props.errors.length > 0 ? 'destructive' : this.props.primary ? 'primary' : 'secondary'}
         onClick={this.handleClick}
       >
-        {this.props.text}
-        {this.props.errors.map(error => (
-          <div className="error">{error}</div>
-        ))}
-      </button>
+        <div>{getTitle(this.props)}</div>
+        {getErrors(this.props.errors)}
+      </Button>
     );
   }
+}
+function getTitle(props: TimepickerButtonProps): string {
+  if (props.text) {
+    return props.text;
+  }
+  const timeFrom: string = getPrettyDate(props.time_from);
+  return timeFrom !== 'now' ? timeFrom : 'Error:';
+}
+
+function getErrors(errors: string[]) {
+  if (errors.length > 0) {
+    return <div>{' ' + errors.join()}</div>;
+  }
+  return;
 }

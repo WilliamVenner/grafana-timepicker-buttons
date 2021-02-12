@@ -6,6 +6,31 @@ import { Panel } from './Panel';
 
 export const plugin = new PanelPlugin<SimpleOptions>(Panel).setPanelOptions(builder => {
   return builder
+    .addSelect({
+      path: 'displayStyle',
+      name: 'Display Style',
+      description: 'Visual presentation of the time picker',
+      defaultValue: 'button',
+      settings: {
+        options: [
+          {
+            value: 'button',
+            label: 'Button',
+          },
+          {
+            value: 'dropdown',
+            label: 'Dropdown',
+          },
+        ],
+      },
+    })
+    .addBooleanSwitch({
+      path: 'displayButtonsHorizontal',
+      name: 'Horizontal Buttons',
+      description: 'Display buttons horizaontally.',
+      defaultValue: false,
+      showIf: config => config.displayStyle === 'button',
+    })
     .addCustomEditor({
       id: 'timeFromOption',
       path: 'timeFromOption',

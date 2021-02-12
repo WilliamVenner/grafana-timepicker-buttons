@@ -1,17 +1,17 @@
 import React from 'react';
 import { css, cx } from 'emotion';
 import { PanelProps, GraphSeriesValue } from '@grafana/data';
-import { stylesFactory } from '@grafana/ui';
+import { FullWidthButtonContainer, HorizontalGroup, stylesFactory, VerticalGroup } from '@grafana/ui';
 import { TimepickerData } from 'types';
-import { TimepickerButton } from 'TimepickerButton';
 import { getEpochWithMillis } from './utils';
 import { SimpleOptions } from './types';
+import { TimepickerSelect } from './TimepickerSelect';
+import { TimepickerButton } from './TimepickerButton';
 
 interface Props extends PanelProps<SimpleOptions> {}
 
 export const Panel: React.FC<Props> = ({ options, data, width, height }) => {
   const styles = getStyles();
-
   // Convert data retrieved from datasource into a data structure we can process into <button> elements
   const buttons: TimepickerData[] = [];
   data.series.forEach(series => {
@@ -38,12 +38,12 @@ export const Panel: React.FC<Props> = ({ options, data, width, height }) => {
 
       // Sanitize time_from
       if (typeof button.time_from === 'undefined' || button.time_from === null) {
-        button.errors.push('time_from column is required');
+        button.errors.push(`'${options.timeFromOption}' value is required`);
       } else {
         // Check it's a valid UNIX timestamp
         button.time_from = Number(button.time_from);
         if (isNaN(button.time_from)) {
-          button.errors.push('time_from is not a valid UNIX timestamp');
+          button.errors.push(`'${options.timeFromOption}' is not a valid UNIX timestamp`);
         } else if (typeof button.text === 'undefined' || button.text === null) {
           // If there's no button_text column then just default to a formatted timestamp appropriate for the user's locale
           button.text = new Date(getEpochWithMillis(button.time_from)).toLocaleString();
@@ -58,7 +58,7 @@ export const Panel: React.FC<Props> = ({ options, data, width, height }) => {
         // Check it's a valid UNIX timestamp
         button.time_to = Number(button.time_to);
         if (isNaN(button.time_to)) {
-          button.errors.push('time_to is not a valid UNIX timestamp');
+          button.errors.push(`'${options.timeToOption}' is not a valid UNIX timestamp`);
         }
       }
 
@@ -67,33 +67,50 @@ export const Panel: React.FC<Props> = ({ options, data, width, height }) => {
   });
 
   return (
-    <div
-      className={cx(
-        styles.wrapper,
-        css`
-          width: ${width}px;
-          height: ${height}px;
-        `
-      )}
-    >
-      {buttons.map(button => (
-        <TimepickerButton
-          text={button.text}
-          time_from={button.time_from}
-          time_to={button.time_to}
-          primary={button.primary}
-          errors={button.errors}
-        ></TimepickerButton>
-      ))}
+    <div className="gf-form">
+      <div
+        className={cx(
+          styles.wrapper,
+          css`
+            width: ${width}px;
+            height: ${height}px;
+          `
+        )}
+      >
+        {options.displayStyle === 'dropdown' && <TimepickerSelect timepickerData={buttons} />}
+        {options.displayStyle === 'button' && !options.displayButtonsHorizontal && (
+          <FullWidthButtonContainer>
+            <VerticalGroup spacing={'sm'}>{buttonFactory(buttons)}</VerticalGroup>
+          </FullWidthButtonContainer>
+        )}
+        {options.displayStyle === 'button' && options.displayButtonsHorizontal && (
+          <HorizontalGroup spacing={'sm'} wrap={true}>
+            {buttonFactory(buttons)}
+          </HorizontalGroup>
+        )}
+      </div>
     </div>
   );
 };
+
+function buttonFactory(buttons: TimepickerData[]) {
+  return buttons.map(button => (
+    <TimepickerButton
+      text={button.text}
+      time_from={button.time_from}
+      time_to={button.time_to}
+      primary={button.primary || false}
+      errors={button.errors}
+    />
+  ));
+}
 
 const getStyles = stylesFactory(() => {
   return {
     wrapper: css`
       position: relative;
       overflow-y: auto;
+      overflow-x: auto;
     `,
   };
 });
