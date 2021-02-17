@@ -5,9 +5,10 @@ A Grafana panel which allows you to create a list of buttons which set specific 
 
 <p align="center">
 	<img alt="Panel Screenshot Vertical Buttons" src="https://i.imgur.com/ft77DQM.png"/>
+	<img alt="Panel Screenshot Dropdown List" src="https://i.imgur.com/1XvGim1.png"/>
 	<img alt="Panel Screenshot Horizontal Buttons" src="https://i.imgur.com/qUAIQF9.png"/>
-	<img alt="Panel Screenshot Dropdown List" src="https://i.imgur.com/a3MwaGK.png"/>
 </p>
+
 --------
 
 ## Compatibility
@@ -37,8 +38,12 @@ sudo service grafana-server start
 ### Display Style Configuration
 The timepicker can be configured to display buttons (vertically or horizontally), or as a dropdown list.
 
-![Panel Options Buttons](https://i.imgur.com/9wuLCiW.png)
-![Panel Options Dropdown List](https://i.imgur.com/glaCfLy.png)
+<br>
+<p align="center">
+  <img alt="Panel Options Buttons" src="https://i.imgur.com/9wuLCiW.png"/>
+  <img alt="Panel Options Dropdown List" src="https://i.imgur.com/glaCfLy.png"/>
+</p>
+<br>
 
 ### Field Mapping
 All dates and times should use UTC.
@@ -47,7 +52,11 @@ All dates and times should use UTC.
 
 The panel can be configured to map fields to the button properties:
 
-![Panel Options](https://i.imgur.com/IioqIhH.png)
+<br>
+<p align="center">
+  <img alt="Panel Options" src="https://i.imgur.com/IioqIhH.png"/>
+</p>
+<br>
 
 The data fields returned from the datasource should be mapped with the following panel configuration settings:
 
@@ -59,8 +68,13 @@ The data fields returned from the datasource should be mapped with the following
 | **Primary Field**     | primary      | _Optional_<br>Field used to determine if the button will be highlighted (blue/"pop out" depending on your theme)                                                          |
 | **Primary Value**     | 1            | _Optional_<br>A Regex pattern to perform on the `Primary Field`. If matched the button will be highlighted.                                                         |
 
+<br>
 
-![Example Screenshot](https://i.imgur.com/EbL6oMv.png)
+<p align="center">
+  <img alt="Example Screenshot" src="https://i.imgur.com/EbL6oMv.png"/>
+</p>
+
+<br>
 
 --------
 

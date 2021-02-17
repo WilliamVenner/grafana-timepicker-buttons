@@ -4,10 +4,8 @@
 A Grafana panel which allows you to create a list of buttons which set specific times (retrieved from a datasource) on the dashboard's timepicker when clicked.
 
 ![Panel Screenshot Vertical Buttons](https://i.imgur.com/ft77DQM.png)
+![Panel Screenshot Dropdown List](https://i.imgur.com/1XvGim1.png)
 ![Panel Screenshot Horizontal Buttons](https://i.imgur.com/qUAIQF9.png)
-![Panel Screenshot Dropdown List](https://i.imgur.com/a3MwaGK.png)
-
-	<img alt="Panel Screenshot" src="https://i.imgur.com/qUAIQF9.png"/>
 
 --------
 
