@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 
 import './css/TimepickerButton.css';
 import { getPrettyDate, changeTimeRange } from './utils';
-import { Button } from '@grafana/ui';
+import {Button, IconName} from '@grafana/ui';
 
 interface TimepickerButtonProps {
   text?: string;
   time_from: number;
   time_to?: number;
-  primary: boolean;
+  isPrimary: boolean;
+  isCurrentTime: boolean;
   errors: string[];
 }
 
@@ -27,8 +28,8 @@ export class TimepickerButton extends Component<TimepickerButtonProps> {
   render() {
     return (
       <Button
-        icon={this.props.errors.length > 0 ? 'exclamation-triangle' : 'clock-nine'}
-        variant={this.props.errors.length > 0 ? 'destructive' : this.props.primary ? 'primary' : 'secondary'}
+        icon={ getIcon(this.props) }
+        variant={this.props.errors.length > 0 ? 'destructive' : this.props.isCurrentTime ? 'primary' : 'secondary'}
         onClick={this.handleClick}
       >
         <div>{getTitle(this.props)}</div>
@@ -37,6 +38,13 @@ export class TimepickerButton extends Component<TimepickerButtonProps> {
     );
   }
 }
+
+function getIcon(props: TimepickerButtonProps): IconName {
+  if(props.errors.length > 0) { return 'exclamation-triangle'; }
+  if(props.isPrimary) { return 'star'; }
+  return 'clock-nine';
+}
+
 function getTitle(props: TimepickerButtonProps): string {
   if (props.text) {
     return props.text;

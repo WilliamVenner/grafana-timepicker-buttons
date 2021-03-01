@@ -3,7 +3,7 @@ import { css, cx } from 'emotion';
 import { PanelProps, GraphSeriesValue } from '@grafana/data';
 import { FullWidthButtonContainer, HorizontalGroup, stylesFactory, VerticalGroup } from '@grafana/ui';
 import { TimepickerData } from 'types';
-import { getEpochWithMillis } from './utils';
+import {getEpochWithMillis, getEpochWithoutMillis} from './utils';
 import { SimpleOptions } from './types';
 import { TimepickerSelect } from './TimepickerSelect';
 import { TimepickerButton } from './TimepickerButton';
@@ -23,15 +23,16 @@ export const Panel: React.FC<Props> = ({ options, data, width, height }) => {
         text: series.fields.find(field => field.name === options.buttonTextOption)?.values.get(i),
         time_from: series.fields.find(field => field.name === options.timeFromOption)?.values.get(i),
         time_to: series.fields.find(field => field.name === options.timeToOption)?.values.get(i),
+        isCurrentTime: false,
         errors: [],
       };
 
-      // Sanitize primary
+      // Sanitize isPrimary
       if (typeof options.primaryFieldOption !== 'undefined' && typeof options.primaryFieldValueOption !== 'undefined') {
         let primary = series.fields.find(field => field.name === options.primaryFieldOption)?.values.get(i);
         if (typeof primary !== 'undefined' && primary !== null) {
           if (primary.toString().match(options.primaryFieldValueOption)) {
-            button.primary = true;
+            button.isPrimary = true;
           }
         }
       }
@@ -61,6 +62,13 @@ export const Panel: React.FC<Props> = ({ options, data, width, height }) => {
           button.errors.push(`'${options.timeToOption}' is not a valid UNIX timestamp`);
         }
       }
+
+      // Determine if the Range equals the current Time Range
+      const isFromCurrent = getEpochWithoutMillis(button.time_from) === data.timeRange.from.unix();
+      const isToCurrent = getEpochWithoutMillis(button?.time_to || data.timeRange.to.unix())
+        === data.timeRange.to.unix();
+      button.isCurrentTime = isFromCurrent && isToCurrent;
+
 
       buttons.push(button);
     }
@@ -102,7 +110,8 @@ function buttonFactory(buttons: TimepickerData[]) {
       text={button.text}
       time_from={button.time_from}
       time_to={button.time_to}
-      primary={button.primary || false}
+      isPrimary={button.isPrimary || false}
+      isCurrentTime={button.isCurrentTime}
       errors={button.errors}
     />
   ));
