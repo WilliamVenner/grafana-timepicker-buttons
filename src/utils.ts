@@ -14,6 +14,18 @@ export const getEpochWithMillis = (time: number): number => {
 };
 
 /**
+ * This formats a time field to ensure the millisecond portion of the epoch time is
+ * NOT included.
+ *
+ * @param time the epoch time to format
+ *
+ * @returns the formatted epoch time containing milliseconds.
+ */
+export const getEpochWithoutMillis = (time: number): number => {
+  return time > 100000000000 ? time % 1000 : time;
+};
+
+/**
  * This changes the QUery map of the URL to effectively change the to and from time.
  *
  * @param time_from the start time
