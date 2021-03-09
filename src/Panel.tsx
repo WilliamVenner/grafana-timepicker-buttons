@@ -3,7 +3,7 @@ import { css, cx } from 'emotion';
 import { PanelProps, GraphSeriesValue } from '@grafana/data';
 import { FullWidthButtonContainer, HorizontalGroup, stylesFactory, VerticalGroup } from '@grafana/ui';
 import { TimepickerData } from 'types';
-import {getEpochWithMillis, getEpochWithoutMillis} from './utils';
+import { getEpochWithMillis, getEpochWithoutMillis } from './utils';
 import { SimpleOptions } from './types';
 import { TimepickerSelect } from './TimepickerSelect';
 import { TimepickerButton } from './TimepickerButton';
@@ -65,10 +65,9 @@ export const Panel: React.FC<Props> = ({ options, data, width, height }) => {
 
       // Determine if the Range equals the current Time Range
       const isFromCurrent = getEpochWithoutMillis(button.time_from) === data.timeRange.from.unix();
-      const isToCurrent = getEpochWithoutMillis(button?.time_to || data.timeRange.to.unix())
-        === data.timeRange.to.unix();
+      const isToCurrent =
+        getEpochWithoutMillis(button?.time_to || data.timeRange.to.unix()) === data.timeRange.to.unix();
       button.isCurrentTime = isFromCurrent && isToCurrent;
-
 
       buttons.push(button);
     }

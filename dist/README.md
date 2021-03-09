@@ -55,8 +55,8 @@ The data fields returned from the datasource should be mapped with the following
 | **Time From Field**   | time_from    | **Required**<br>A UNIX Timestamp (`Number`)<br>This will set the "From" part of the time range.<br>The value can include or exclude ms. Example: 1612413008000 or 1612413008  |
 | **Time To Field**     | time_to      | _Optional_<br>A UNIX Timestamp (`Number`)<br>This will set the "To" part of the time range.  <br>The value can include or exclude ms. Example: 1612413008000 or 1612413008<br>_If this is not supplied, it will default to `now`._ |
 | **Button Text Field** | button_text  | _Optional_<br>What the text inside the button will say.<br>_If this is not supplied, it will default to a locale-formatted timestamp._              |
-| **Primary Field**     | primary      | _Optional_<br>Field used to determine if the button will be highlighted (blue/"pop out" depending on your theme)                                                          |
-| **Primary Value**     | 1            | _Optional_<br>A Regex pattern to perform on the `Primary Field`. If matched the button will be highlighted.                                                         |
+| **Primary Field**     | primary      | _Optional_<br>Field used to determine if the button will be marked with a `star` icon                                                         |
+| **Primary Value**     | 1            | _Optional_<br>A Regex pattern to perform on the `Primary Field`. If matched the button will be marked with a `star` icon.                                                    |
 
 
 ![Example Screenshot](https://i.imgur.com/EbL6oMv.png)
