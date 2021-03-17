@@ -6,6 +6,7 @@
     "build": "grafana-toolkit plugin:build && cp README-grafana.md dist/README.md",
     "dev": "grafana-toolkit plugin:dev && cp README-grafana.md dist/README.md",
     "watch": "grafana-toolkit plugin:dev --watch && cp README-grafana.md dist/README.md",
+    "sign": "grafana-toolkit plugin:sign",
     "test": "grafana-toolkit plugin:test"
   },
   "repository": "github:WilliamVenner/grafana-timepicker-buttons",
