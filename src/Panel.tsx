@@ -104,8 +104,9 @@ export const Panel: React.FC<Props> = ({ options, data, width, height }) => {
 };
 
 function buttonFactory(buttons: TimepickerData[]) {
-  return buttons.map((button) => (
+  return buttons.map((button, i) => (
     <TimepickerButton
+      key={i}
       text={button.text}
       time_from={button.time_from}
       time_to={button.time_to}
