@@ -24,7 +24,7 @@
     "emotion": "10.0.27"
   },
   "engines": {
-    "node": ">=12"
+    "node": ">=14"
   },
   "dependencies": {
     "grafana-plugin-support": "0.3.0-alpha.4"
