@@ -29,3 +29,4 @@ e2e-results/
 .idea
 
 /grafana-timepicker-buttons.iml
+dist/

@@ -14,22 +14,22 @@ export const Panel: React.FC<Props> = ({ options, data, width, height }) => {
   const styles = getStyles();
   // Convert data retrieved from datasource into a data structure we can process into <button> elements
   const buttons: TimepickerData[] = [];
-  data.series.forEach(series => {
+  data.series.forEach((series) => {
     const timeVals: GraphSeriesValue[] = series.fields[0].values.toArray();
     // Create all selectable values, i.e. all frames in the data query response.
 
     for (let i = 0; i < timeVals.length; i++) {
       let button: TimepickerData = {
-        text: series.fields.find(field => field.name === options.buttonTextOption)?.values.get(i),
-        time_from: series.fields.find(field => field.name === options.timeFromOption)?.values.get(i),
-        time_to: series.fields.find(field => field.name === options.timeToOption)?.values.get(i),
+        text: series.fields.find((field) => field.name === options.buttonTextOption)?.values.get(i),
+        time_from: series.fields.find((field) => field.name === options.timeFromOption)?.values.get(i),
+        time_to: series.fields.find((field) => field.name === options.timeToOption)?.values.get(i),
         isCurrentTime: false,
         errors: [],
       };
 
       // Sanitize isPrimary
       if (typeof options.primaryFieldOption !== 'undefined' && typeof options.primaryFieldValueOption !== 'undefined') {
-        let primary = series.fields.find(field => field.name === options.primaryFieldOption)?.values.get(i);
+        let primary = series.fields.find((field) => field.name === options.primaryFieldOption)?.values.get(i);
         if (typeof primary !== 'undefined' && primary !== null) {
           if (primary.toString().match(options.primaryFieldValueOption)) {
             button.isPrimary = true;
@@ -104,7 +104,7 @@ export const Panel: React.FC<Props> = ({ options, data, width, height }) => {
 };
 
 function buttonFactory(buttons: TimepickerData[]) {
-  return buttons.map(button => (
+  return buttons.map((button) => (
     <TimepickerButton
       text={button.text}
       time_from={button.time_from}
