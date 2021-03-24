@@ -3,10 +3,10 @@ name: CI
 on:
   push:
     branches:
-      - cicd
+      - master
   pull_request:
     branches:
-      - main
+      - master
 jobs:
   build:
     runs-on: ubuntu-latest
