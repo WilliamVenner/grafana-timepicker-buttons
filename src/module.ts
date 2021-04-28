@@ -3,7 +3,7 @@ import { SimpleOptions } from './types';
 import { FieldSelectEditor } from 'grafana-plugin-support';
 import { Panel } from './Panel';
 
-export const plugin = new PanelPlugin<SimpleOptions>(Panel).setPanelOptions(builder => {
+export const plugin = new PanelPlugin<SimpleOptions>(Panel).setPanelOptions((builder) => {
   return builder
     .addSelect({
       path: 'displayStyle',
@@ -30,7 +30,7 @@ export const plugin = new PanelPlugin<SimpleOptions>(Panel).setPanelOptions(buil
       description: 'Display buttons horizontally.',
       category: ['Display'],
       defaultValue: false,
-      showIf: config => config.displayStyle === 'button',
+      showIf: (config) => config.displayStyle === 'button',
     })
     .addCustomEditor({
       id: 'timeFromOption',
@@ -80,6 +80,6 @@ export const plugin = new PanelPlugin<SimpleOptions>(Panel).setPanelOptions(buil
       description: 'Regex value which if matched highlights the button.',
       defaultValue: '1',
       category: ['Field Mapping'],
-      showIf: config => typeof config.primaryFieldOption !== 'undefined',
+      showIf: (config) => typeof config.primaryFieldOption !== 'undefined',
     });
 });
