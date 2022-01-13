@@ -42,7 +42,7 @@ export const Panel: React.FC<Props> = ({ options, data, width, height }) => {
         button.errors.push(`'${options.timeFromOption}' value is required`);
       } else {
         // Check it's a valid UNIX timestamp
-        button.time_from = Number(button.time_from);
+        button.time_from = Date.parse(String(button.time_from)) || Number(button.time_from);
         if (isNaN(button.time_from)) {
           button.errors.push(`'${options.timeFromOption}' is not a valid UNIX timestamp`);
         } else if (typeof button.text === 'undefined' || button.text === null) {
@@ -57,7 +57,7 @@ export const Panel: React.FC<Props> = ({ options, data, width, height }) => {
       // Sanitize time_to
       if (typeof button.time_to !== 'undefined' && button.time_to !== null) {
         // Check it's a valid UNIX timestamp
-        button.time_to = Number(button.time_to);
+        button.time_to = Date.parse(String(button.time_to)) || Number(button.time_to);
         if (isNaN(button.time_to)) {
           button.errors.push(`'${options.timeToOption}' is not a valid UNIX timestamp`);
         }
