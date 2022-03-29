@@ -26,7 +26,7 @@ export const getEpochWithoutMillis = (time: number): number => {
 };
 
 /**
- * This changes the QUery map of the URL to effectively change the to and from time.
+ * This changes the Query map of the URL to effectively change the to and from time.
  *
  * @param time_from the start time
  * @param time_to the end time. Defaults to 'now' if null or invalid.
@@ -37,6 +37,9 @@ export function changeTimeRange(time_from: number, time_to?: number) {
   if (typeof time_to !== 'undefined' && time_to !== null && !isNaN(time_to)) {
     queryMap.to = getEpochWithMillis(time_to);
   }
+
+  queryMap['var-patient_id'] = '1';
+
   getLocationSrv().update({
     partial: true,
     replace: true,
